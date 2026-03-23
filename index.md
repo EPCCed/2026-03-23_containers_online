@@ -4,23 +4,13 @@ root: .  # Is the only page that doesn't follow the pattern /:path/index.html
 permalink: index.html  # Is the only page that doesn't follow the pattern /:path/index.html
 ---
 
-Times:
-- Monday 17 February 2025 10:00 - 15:30
-- Tuesday 18 February 2025 09:00 - 14:30
+Times: Mon-Tue, 23-24 March 2026, 10:00 - 15:30
 
-(Note: the timings in the schedule below do not reflect the earlier start time for day 2)
+Location: Online
 
-Location:
+Instructor: [Juan Herrera (EPCC, University of Edinburgh)](https://www.epcc.ed.ac.uk/about-us/our-team/dr-juan-rodriguez-herrera)
 
-South Room<br/> 
-West Hub,<br/>
-JJ Thomson Avenue,<br/>
-Cambridge, CB3 0US
-
-
-Instructor: [Andy Turner (EPCC, University of Edinburgh)](https://www.epcc.ed.ac.uk/about-us/our-team/dr-andrew-turner), [Jeremy Cohen (Imperial College)](https://profiles.imperial.ac.uk/jeremy.cohen)
-
-<hr/>
+<hr />
 
 This session aims to introduce the use of Docker and Singularity containers with the goal of using them to effect reproducible computational environments. Such environments are useful for ensuring reproducible research outputs, for example.
 
