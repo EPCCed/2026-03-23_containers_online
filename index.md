@@ -4,7 +4,7 @@ root: .  # Is the only page that doesn't follow the pattern /:path/index.html
 permalink: index.html  # Is the only page that doesn't follow the pattern /:path/index.html
 ---
 
-Times: Mon-Tue, 23-24 March 2026, 10:00 - 15:30
+Times: Mon-Tue, 23-24 March 2026, 10:00 - 16:00
 
 Location: Online
 
