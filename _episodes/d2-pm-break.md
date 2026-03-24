@@ -1,5 +1,5 @@
 ---
-title: "Break"
+title: "Afternoon break"
 break: 30
 ---
 

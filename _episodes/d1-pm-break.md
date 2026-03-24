@@ -1,6 +1,6 @@
 ---
-title: "Break"
-break: 30
+title: "Afternoon break"
+break: 15
 ---
 
 Afternoon break

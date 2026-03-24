@@ -108,8 +108,8 @@ remote_theme: carpentries/carpentries-theme@main
 episode_order:
   - introduction
   - meet-docker
-  - d1-am-break
   - running-containers
+  - d1-am-break
   - managing-containers
   - docker-hub
   - d1-lunch

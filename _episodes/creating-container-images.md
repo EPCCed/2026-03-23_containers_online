@@ -100,7 +100,7 @@ can be used to create a new container image.
 Download the [docker-intro.zip]({{ page.root }}/files/docker-intro.zip) file and expand it, e.g.
 
 ~~~
-wget https://epcced.github.io/2024-04-16_containers_bham/files/docker-intro.zip
+# Download file using `wget`
 unzip docker-intro.zip
 ~~~
 {: .language-bash}

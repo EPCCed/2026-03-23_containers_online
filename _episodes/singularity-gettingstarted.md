@@ -85,21 +85,12 @@ replace references to `singularity` with `apptainer`, if you wish.
 
 ## Checking Singularity works
 
-> ## login4.archer2.ac.uk
-> You must use the `login4.archer2.ac.uk` login address rather than the general
-> login address as login4 has fixes for Singularity that are not present on the
-> usual login nodes (the fixes will be rolled out to all ARCHER2 login and compute
-> nodes soon).
-{: .callout}
-
 [Login to ARCHER2](https://docs.archer2.ac.uk/user-guide/connecting/) using the
-login address `login4.archer2.ac.uk`:
+login address `login.archer2.ac.uk`:
 
 ~~~
 ssh -i /path/to/ssh-key user@login.archer2.ac.uk
 ~~~
-
-
 
 Now check that the `singularity` command is available in your terminal:
 

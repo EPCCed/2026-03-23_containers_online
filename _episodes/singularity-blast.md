@@ -32,13 +32,13 @@ provides the BLAST+ software.
 
 ## Download the required data
 
-Download the [blast_example.tar.gz]({{ page.root }}/files/blast_example.tar.gz).
+Download the [blast_example.tar.gz]({{ page.root }}/files/blast_example.tar.gz)
+using `wget`.
 
 Unpack the archive which contains the downloaded data required for the BLAST+ example:
 
 ~~~
-remote$ wget https://github.com/EPCCed/2025-02-17_containers_cambridge/raw/refs/heads/gh-pages/files/blast_example.tar.gz
-remote$ tar -xvf blast_example.tar.gz
+remote$ tar xvf blast_example.tar.gz
 ~~~
 {: .language-bash}
 ~~~
