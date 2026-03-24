@@ -16,10 +16,10 @@ Singularity can also start containers directly from Docker container images, ope
 
 While Singularity doesn't actually run a container using the Docker container image (it first converts it to a format suitable for use by Singularity), the approach used provides a seamless experience for the end user. When you direct Singularity to run a container based on a Docker container image, Singularity pulls the slices or _layers_ that make up the Docker container image and converts them into a single-file Singularity SIF container image.
 
-For example, moving on from the simple _Hello World_ examples that we've looked at so far, let's pull one of the [official Docker Python container images](https://hub.docker.com/_/python). We'll use the image with the tag `3.9.6-slim-buster` which has Python 3.9.6 installed on Debian's [Buster](https://www.debian.org/releases/buster/) (v10) Linux distribution:
+For example, moving on from the simple _Hello World_ examples that we've looked at so far, let's pull one of the [official Docker Python container images](https://hub.docker.com/_/python). We'll use the image with the tag `3.14.3-slim` which has Python 3.14.3 installed on Debian. This image does not contain the common Debian packages contained in the default tag and only contains the minimal Debian packages needed to run `python`.
 
 ~~~
-remote$ singularity pull python-3.13.2.sif docker://python:3.13.2-slim-bookworm
+remote$ singularity pull python-3.14.3.sif docker://python:3.14.3-slim
 ~~~
 {: .language-bash}
 
@@ -28,28 +28,28 @@ INFO:    Converting OCI blobs to SIF format
 WARNING: 'nodev' mount option set on /tmp, it could be a source of failure during build process
 INFO:    Starting build...
 Getting image source signatures
-Copying blob c29f5b76f736 done  
-Copying blob 91af2433aaf0 done  
-Copying blob 0d263a67e0db done  
-Copying blob 34abb9d38fa3 done  
-Copying config efb22c4342 done  
+Copying blob ec781dee3f47 done
+Copying blob 28f4c4271262 done
+Copying blob b166afc64daf done
+Copying blob fa7570d0dc9b done
+Copying config 3876b2cb38 done
 Writing manifest to image destination
 Storing signatures
-2025/02/09 09:15:56  info unpack layer: sha256:c29f5b76f736a8b555fd191c48d6581bb918bcd605a7cbcc76205dd6acff3260
-2025/02/09 09:15:56  warn xattr{etc/gshadow} ignoring ENOTSUP on setxattr "user.rootlesscontainers"
-2025/02/09 09:15:56  warn xattr{/tmp/build-temp-141758395/rootfs/etc/gshadow} destination filesystem does not support xattrs, further warnings will be suppressed
-2025/02/09 09:15:56  info unpack layer: sha256:91af2433aaf067a250607e067549a710adc587e7f5cf57c4ee096224cc5834dc
-2025/02/09 09:15:56  warn xattr{var/cache/apt/archives/partial} ignoring ENOTSUP on setxattr "user.rootlesscontainers"
-2025/02/09 09:15:56  warn xattr{/tmp/build-temp-141758395/rootfs/var/cache/apt/archives/partial} destination filesystem does not support xattrs, further warnings will be suppressed
-2025/02/09 09:15:57  info unpack layer: sha256:0d263a67e0dbb841a730efc09f84672f73b02427a19a57d9ef380b66eaaf0aec
-2025/02/09 09:15:57  warn xattr{var/log/apt/term.log} ignoring ENOTSUP on setxattr "user.rootlesscontainers"
-2025/02/09 09:15:57  warn xattr{/tmp/build-temp-141758395/rootfs/var/log/apt/term.log} destination filesystem does not support xattrs, further warnings will be suppressed
-2025/02/09 09:15:57  info unpack layer: sha256:34abb9d38fa3fcf8526765f370a3f2c6341456eca879f3af027c42062521e5bc
+2026/03/24 09:37:31  info unpack layer: sha256:ec781dee3f4719c2ca0dd9e73cb1d4ed834ed1a406495eb6e44b6dfaad5d1f8f
+2026/03/24 09:37:31  warn xattr{etc/gshadow} ignoring ENOTSUP on setxattr "user.rootlesscontainers"
+2026/03/24 09:37:31  warn xattr{/tmp/build-temp-124617440/rootfs/etc/gshadow} destination filesystem does not support xattrs, further warnings will be suppressed
+2026/03/24 09:37:32  info unpack layer: sha256:28f4c427126267299d7c407e60ac8b4b001ee92ed6c2ed0c3d0d237ab634a1a7
+2026/03/24 09:37:32  warn xattr{var/cache/apt/archives/partial} ignoring ENOTSUP on setxattr "user.rootlesscontainers"
+2026/03/24 09:37:32  warn xattr{/tmp/build-temp-124617440/rootfs/var/cache/apt/archives/partial} destination filesystem does not support xattrs, further warnings will be suppressed
+2026/03/24 09:37:32  info unpack layer: sha256:b166afc64dafc73acc72490f1ae7b4e4d24f064f91f6b7b4110736bf9ef071e9
+2026/03/24 09:37:33  warn xattr{var/log/apt/term.log} ignoring ENOTSUP on setxattr "user.rootlesscontainers"
+2026/03/24 09:37:33  warn xattr{/tmp/build-temp-124617440/rootfs/var/log/apt/term.log} destination filesystem does not support xattrs, further warnings will be suppressed
+2026/03/24 09:37:33  info unpack layer: sha256:fa7570d0dc9b7cee209516b8eb6a70e2b97cd439a57a3cc4329f76b2b60e1a61
 INFO:    Creating SIF file...
 ~~~
 {: .output}
 
-Note how we see Singularity saying that it's "_Converting OCI blobs to SIF format_". We then see the layers of the Docker container image being downloaded and unpacked and written into a single SIF file. Once the process is complete, we should see the python-3.9.6.sif container image file in the current directory.
+Note how we see Singularity saying that it's "_Converting OCI blobs to SIF format_". We then see the layers of the Docker container image being downloaded and unpacked and written into a single SIF file. Once the process is complete, we should see the python-3.14.3.sif container image file in the current directory.
 
 We can now run a container from this container image as we would with any other Singularity container image.
 
@@ -62,16 +62,17 @@ We can now run a container from this container image as we would with any other 
 > > ## Running a Python container
 > >
 > > ~~~
-> > remote$ singularity run python-3.13.2.sif
+> > remote$ singularity run python-3.14.3.sif
 > > ~~~
 > > {: .language-bash}
 > > 
 > > This should put you straight into a Python interactive shell within the running container:
 > > 
 > > ~~~
-> > Python 3.13.2 (main, Feb  6 2025, 22:37:50) [GCC 12.2.0] on linux
+> > Python 3.14.3 (main, Mar 16 2026, 23:02:05) [GCC 14.2.0] on linux
 > > Type "help", "copyright", "credits" or "license" for more information.
-> > >>> 
+> > >>>
+
 > > ~~~
 > > Now try running some simple Python statements:
 > > ~~~
@@ -97,7 +98,7 @@ In addition to running a container and having it run the default run script, you
 > >
 > > Recall from the earlier material that we can use the `singularity shell` command to open a shell within a container. To open a regular shell within a container based on the `python-3.13.2.sif` container image, we can therefore run:
 > > ~~~
-> > remote$ singularity shell python-3.13.2.sif
+> > remote$ singularity shell python-3.14.3.sif
 > > ~~~
 > > {: .language-bash}
 > > 
@@ -105,10 +106,10 @@ In addition to running a container and having it run the default run script, you
 > > Singularity> echo $SHELL
 > > /bin/bash
 > > Singularity> cat /etc/issue
-> > Debian GNU/Linux 10 \n \l
+> > Debian GNU/Linux 13 \n \l
 > > 
 > > Singularity> python
-> > Python 3.13.2 (main, Feb  6 2025, 22:37:50) [GCC 12.2.0] on linux
+> > Python 3.14.3 (main, Mar 16 2026, 23:02:05) [GCC 14.2.0] on linux
 > > Type "help", "copyright", "credits" or "license" for more information.
 > > >>> print('Hello World!')
 > > Hello World!
@@ -122,7 +123,7 @@ In addition to running a container and having it run the default run script, you
 > > It is also possible to use the `singularity exec` command to run an executable within a container. We could, therefore, use the `exec` command to run `/bin/bash`:
 > > 
 > > ~~~
-> > remote$ singularity exec python-3.13.2.sif /bin/bash
+> > remote$ singularity exec python-3.14.3.sif /bin/bash
 > > ~~~
 > > {: .language-bash}
 > > 

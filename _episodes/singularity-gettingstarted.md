@@ -64,7 +64,7 @@ software. The original open source Singularity project has recently been
 [renamed to
 Apptainer](https://apptainer.org/news/community-announcement-20211130/) and has
 moved into the Linux Foundation. The initial release of Apptainer was made
-about a year ago, at the time of writing. While earlier versions of this course
+in March 2022. While earlier versions of this course
 focused on versions of Singularity released before the project fork, we now
 base the course material on recent Apptainer releases. Despite this, the basic
 features of Apptainer/Singularity remain the same and so this material is
